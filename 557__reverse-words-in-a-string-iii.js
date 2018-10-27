@@ -1,3 +1,9 @@
+/**
+ * @param {string} s
+ * @return {string}
+ */
+
+// use buildin reverse() for array
 var reverseWords = function(s) {
     s = s.split(' ');
     for (let i = 0; i < s.length; i++) {
@@ -9,10 +15,8 @@ var reverseWords = function(s) {
 };
 
 
-/*
-O(n) time
-O(1) space
-
+// O(n) time
+// O(1) space
 var reverseWords = function(s) {
     if (!s || s.length === 0) return s;
     let res = '';
@@ -35,4 +39,4 @@ var reverseWords = function(s) {
     return res;
 };
 
-*/
+
