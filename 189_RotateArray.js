@@ -45,6 +45,7 @@ var rotate = function(nums, k) {
  * O(n) space
  */
 var rotate = function(nums, k) {
+    k = k % nums.length;
     let n = nums.length;
     let res = new Array(n);
     
