@@ -26,6 +26,27 @@ var rotate = function(nums, k) {
 
 
 /**
+ * Using Cyclic Replacements
+ * O(n) time
+ * O(1) space
+ */
+var rotate = function(nums, k) {
+    let n = nums.length;
+    k = k % n;
+    let count = 0;
+    for (let start = 0; count < nums.length; start++) {
+        let currIdx = start;
+        do {
+            let nextIdx = (currIdx + k) % n;
+            [nums[nextIdx], nums[start]] = [nums[start], nums[nextIdx]];
+            currIdx = nextIdx;
+            count++;
+        } while (start != currIdx)
+    }
+};
+    
+
+/**
  * pop + unshift
  * O(k) time ?
  * O(n) space ?
