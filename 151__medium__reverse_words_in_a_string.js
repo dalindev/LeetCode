@@ -2,6 +2,13 @@
  * @param {string} str
  * @returns {string}
  */
+
+/**
+ *
+ * O(n) time
+ * O(1) space
+ *
+ */
 var reverseWords = function(str) {
     str = str.trim().replace(/\s\s+/g, ' ');
     str = str.split(' ');

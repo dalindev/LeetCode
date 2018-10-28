@@ -14,7 +14,7 @@ var rotate = function(nums, k) {
     revs(nums, 0, nums.length-1);
     revs(nums, 0, k-1);
     revs(nums,k, nums.length-1);
-    
+
     function revs (nums, start, end) {
         while (start < end) {
             [nums[start], nums[end]] = [nums[end], nums[start]];
@@ -44,7 +44,7 @@ var rotate = function(nums, k) {
         } while (start != currIdx)
     }
 };
-    
+
 
 /**
  * pop + unshift
@@ -69,11 +69,11 @@ var rotate = function(nums, k) {
     k = k % nums.length;
     let n = nums.length;
     let res = new Array(n);
-    
+
     for (let i = 0; i < n; i++) {
         res[i] = nums[i];
     }
-    
+
     for (let i = 0; i < n; i++) {
         nums[(i+k)%n] = res[i];
     }
