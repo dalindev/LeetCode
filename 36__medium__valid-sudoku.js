@@ -69,7 +69,7 @@ var isValidSudoku = function(board) {
 
             let rowKey = 'r' + r + '|' + num;
             let colKey = 'c' + c + '|' + num;
-            let gridKey = 'g'+ ~~((Number(r))*3/rows) + '|' + ~~((Number(c)*3)/cols) + '|' + num;
+            let gridKey = 'g'+ (~~(r/3)*3 + ~~(c/3)) + '|' + num;
             if (!hashset.has(rowKey) && !hashset.has(colKey) && !hashset.has(gridKey)) {
                 hashset.add(rowKey);
                 hashset.add(colKey);
