@@ -13,7 +13,7 @@
  */
 
 /*
-	=================== solution 1 (115ms) ===================
+    =================== solution 1 (115ms) ===================
 */
 /**
  * @param {string[]} NOTE: dictionary is unique here!!!
@@ -61,7 +61,7 @@ ValidWordAbbr.prototype.toAbbr = (word) => {
 
 
 /*
-	=================== solution 2 (96ms) ===================
+    =================== solution 2 (96ms) ===================
 */
 /**
  * @param {string[]} dictionary is unique
