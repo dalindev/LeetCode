@@ -19,7 +19,6 @@
 
 */
 
-
 /**
  * Top-Down (DFS traversal?)
  * O(n) time (we visit each node exactly once)
@@ -34,18 +33,17 @@ var maxDepth = function(root) {
     topDown(root, max, 0);
     return max;
 
-    function topDown (node, depth) {
+    function topDown(node, depth) {
         if (!node) return;
 
         if (!node.left && !node.right) {
             max = Math.max(max, depth);
         }
 
-        topDown(node.left, depth+1);
-        topDown(node.right, depth+1);
-    };
+        topDown(node.left, depth + 1);
+        topDown(node.right, depth + 1);
+    }
 };
-
 
 /**
  * Bottom-Up (DFS Divide and Conquer)
@@ -62,7 +60,6 @@ var maxDepth = function(root) {
 
     return 1 + Math.max(maxLeft, maxRight);
 };
-
 
 /**
  * iteratively using Queue (BFS)
