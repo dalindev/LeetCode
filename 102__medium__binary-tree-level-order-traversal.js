@@ -20,7 +20,6 @@
 
 */
 
-
 /**
  * Recursive
  * O(n) time
@@ -29,21 +28,20 @@
  * 25m
  */
 var levelOrder = function(root) {
-    let res = [];
-    if (!root) return res;
-    const preorder = (node, level=0) => {
-        if (!node) return;
+  let res = [];
+  if (!root) return res;
+  const preorder = (node, level = 0) => {
+    if (!node) return;
 
-        if (level > res.length - 1) res.push([]);
+    if (level > res.length - 1) res.push([]);
 
-        res[level].push(node.val);
-        preorder(node.left, level+1);
-        preorder(node.right, level+1);
-    }
-    preorder(root);
-    return res;
+    res[level].push(node.val);
+    preorder(node.left, level + 1);
+    preorder(node.right, level + 1);
+  };
+  preorder(root);
+  return res;
 };
-
 
 /**
  * Iteratively using queue
@@ -53,23 +51,23 @@ var levelOrder = function(root) {
  * 10m
  */
 var levelOrder = function(root) {
-    let res = [];
-    let queue = [];
+  let res = [];
+  let queue = [];
 
-    if (!root) return res;
-    queue.push(root);
+  if (!root) return res;
+  queue.push(root);
 
-    while (queue.length > 0) {
-        let lvlen = queue.length;
-        let curr = [];
-        for (let i = 0; i < lvlen; i++) {
-            let node = queue.shift();
-            curr.push(node.val);
-            if (node.left) queue.push(node.left);
-            if (node.right) queue.push(node.right);
-        }
-        res.push(curr);
+  while (queue.length > 0) {
+    let lvlen = queue.length;
+    let curr = [];
+    for (let i = 0; i < lvlen; i++) {
+      let node = queue.shift();
+      curr.push(node.val);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
     }
+    res.push(curr);
+  }
 
-    return res;
+  return res;
 };

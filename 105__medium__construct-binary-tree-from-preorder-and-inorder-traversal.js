@@ -27,23 +27,23 @@ Return the following binary tree:
  * 30m ... ...
  */
 var buildTree = function(preorder, inorder) {
-    let p = 0;
+  let p = 0;
 
-    const helper = (l, r) => {
-        if (l > r) return null;
+  const helper = (l, r) => {
+    if (l > r) return null;
 
-        let root_val = preorder[p++];
-        let root = new TreeNode(root_val);
+    let root_val = preorder[p++];
+    let root = new TreeNode(root_val);
 
-        let idx = inorder.indexOf(root_val);
+    let idx = inorder.indexOf(root_val);
 
-        // recursion
-        root.left = helper(l, idx - 1);
-        root.right = helper(idx + 1, r);
-        return root;
-    };
+    // recursion
+    root.left = helper(l, idx - 1);
+    root.right = helper(idx + 1, r);
+    return root;
+  };
 
-    return helper(0, inorder.length - 1);
+  return helper(0, inorder.length - 1);
 };
 
 /**
@@ -54,25 +54,25 @@ var buildTree = function(preorder, inorder) {
  * 30m ... ...
  */
 var buildTree = function(preorder, inorder) {
-    let p = 0;
-    let mp = {};
-    for (let i = 0; i < inorder.length; i++) {
-        mp[inorder[i]] = i;
-    }
+  let p = 0;
+  let mp = {};
+  for (let i = 0; i < inorder.length; i++) {
+    mp[inorder[i]] = i;
+  }
 
-    const helper = (l, r) => {
-        if (l > r) return null;
+  const helper = (l, r) => {
+    if (l > r) return null;
 
-        let root_val = preorder[p++];
-        let root = new TreeNode(root_val);
+    let root_val = preorder[p++];
+    let root = new TreeNode(root_val);
 
-        let idx = mp[root_val];
+    let idx = mp[root_val];
 
-        // recursion
-        root.left = helper(l, idx - 1);
-        root.right = helper(idx + 1, r);
-        return root;
-    };
+    // recursion
+    root.left = helper(l, idx - 1);
+    root.right = helper(idx + 1, r);
+    return root;
+  };
 
-    return helper(0, inorder.length - 1);
+  return helper(0, inorder.length - 1);
 };

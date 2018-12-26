@@ -27,23 +27,23 @@ return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
  * 12m
  */
 var hasPathSum = function(root, sum) {
-    let found = false;
+  let found = false;
 
-    const topDown = (node, curr = 0) => {
-        if (found || !node) return;
-        curr += node.val;
+  const topDown = (node, curr = 0) => {
+    if (found || !node) return;
+    curr += node.val;
 
-        if (node.left == null && node.right == null) {
-            found = curr == sum ? true : false;
-            return;
-        }
-        if (node.left !== null) topDown(node.left, curr);
-        if (node.right !== null) topDown(node.right, curr);
-    };
+    if (node.left == null && node.right == null) {
+      found = curr == sum ? true : false;
+      return;
+    }
+    if (node.left !== null) topDown(node.left, curr);
+    if (node.right !== null) topDown(node.right, curr);
+  };
 
-    topDown(root);
+  topDown(root);
 
-    return found;
+  return found;
 };
 
 /*

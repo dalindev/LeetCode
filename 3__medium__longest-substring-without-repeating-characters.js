@@ -21,29 +21,28 @@
 
 */
 
-
 /**
  * @param {string} s
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-    if (!s || s.length === 0 || s.length === 1) return s.length;
+  if (!s || s.length === 0 || s.length === 1) return s.length;
 
-    let max = 0;
-    let left = 0;
-    let map = new Map();
+  let max = 0;
+  let left = 0;
+  let map = new Map();
 
-    for (let i = 0; i < s.length; i++) {
-        if (map.has(s[i]) && map.get(s[i]) > 0) {
-            while (map.get(s[i]) > 0) {
-                map.set(s[left], map.get(s[left]) - 1);
-                left++;
-            }
-        }
-        map.set(s[i], 1);
-        max = Math.max(max, i - left + 1);
+  for (let i = 0; i < s.length; i++) {
+    if (map.has(s[i]) && map.get(s[i]) > 0) {
+      while (map.get(s[i]) > 0) {
+        map.set(s[left], map.get(s[left]) - 1);
+        left++;
+      }
     }
-    return max;
+    map.set(s[i], 1);
+    max = Math.max(max, i - left + 1);
+  }
+  return max;
 };
 /**
  *
@@ -52,4 +51,3 @@ var lengthOfLongestSubstring = function(s) {
  *
  * 10m
  */
-

@@ -43,19 +43,19 @@ After calling your function, the tree should look like:
  * 30m
  */
 var connect = function(num) {
-    if (!num) return;
+  if (!num) return;
 
-    let queue = [num];
+  let queue = [num];
 
-    while (queue.length > 0) {
-        let len = queue.length;
-        for (let i = 0; i < len; i++) {
-            let node = queue.shift();
-            node.next = i == len - 1 ? null : queue[0];
-            if (node.left !== null) queue.push(node.left);
-            if (node.right !== null) queue.push(node.right);
-        }
+  while (queue.length > 0) {
+    let len = queue.length;
+    for (let i = 0; i < len; i++) {
+      let node = queue.shift();
+      node.next = i == len - 1 ? null : queue[0];
+      if (node.left !== null) queue.push(node.left);
+      if (node.right !== null) queue.push(node.right);
     }
+  }
 };
 
 /**
@@ -73,13 +73,13 @@ var connect = function(num) {
  *   step2. root=2,left=4,right=5 then 4->5, 5-> ? (if root 2 has next, next.left=6)
  */
 var connect = function(root) {
-    if (!root) return;
+  if (!root) return;
 
-    if (root.left) root.left.next = root.right;
-    if (root.right && root.next) root.right.next = root.next.left;
+  if (root.left) root.left.next = root.right;
+  if (root.right && root.next) root.right.next = root.next.left;
 
-    connect(root.left);
-    connect(root.right);
+  connect(root.left);
+  connect(root.right);
 };
 
 /**
@@ -97,19 +97,19 @@ var connect = function(root) {
  *    Pointer 2 for each level, traversal to right (whole level)
  */
 var connect = function(root) {
-    if (!root) return;
+  if (!root) return;
 
-    let level_head = root;
+  let level_head = root;
 
-    while (level_head) {
-        let curr = level_head; // pointer of this level
+  while (level_head) {
+    let curr = level_head; // pointer of this level
 
-        while (curr) {
-            if (curr.left) curr.left.next = curr.right;
-            if (curr.right && curr.next) curr.right.next = curr.next.left;
-            curr = curr.next;
-        }
-
-        level_head = level_head.left; // keep moving down the level
+    while (curr) {
+      if (curr.left) curr.left.next = curr.right;
+      if (curr.right && curr.next) curr.right.next = curr.next.left;
+      curr = curr.next;
     }
+
+    level_head = level_head.left; // keep moving down the level
+  }
 };

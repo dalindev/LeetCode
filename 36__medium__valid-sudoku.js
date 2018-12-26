@@ -43,12 +43,11 @@
 
 */
 
-
 /**
  * @param {character[][]} board
  * @return {boolean}
  */
- /**
+/**
  *
  * O(n) time
  * O(n) space (3n)
@@ -56,29 +55,32 @@
  * 15m
  */
 var isValidSudoku = function(board) {
-    if (!board || board.length === 0 || board[0].length === 0) return false;
+  if (!board || board.length === 0 || board[0].length === 0) return false;
 
-    let rows = board.length;
-    let cols = board[0].length;
-    let hashset = new Set(); // hashset
+  let rows = board.length;
+  let cols = board[0].length;
+  let hashset = new Set(); // hashset
 
-    for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-            let num = board[r][c];
-            if (num === '.') continue;
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      let num = board[r][c];
+      if (num === ".") continue;
 
-            let rowKey = 'r' + r + '|' + num;
-            let colKey = 'c' + c + '|' + num;
-            let gridKey = 'g'+ (~~(r/3)*3 + ~~(c/3)) + '|' + num;
-            if (!hashset.has(rowKey) && !hashset.has(colKey) && !hashset.has(gridKey)) {
-                hashset.add(rowKey);
-                hashset.add(colKey);
-                hashset.add(gridKey);
-            } else {
-                return false;
-            }
-        }
+      let rowKey = "r" + r + "|" + num;
+      let colKey = "c" + c + "|" + num;
+      let gridKey = "g" + (~~(r / 3) * 3 + ~~(c / 3)) + "|" + num;
+      if (
+        !hashset.has(rowKey) &&
+        !hashset.has(colKey) &&
+        !hashset.has(gridKey)
+      ) {
+        hashset.add(rowKey);
+        hashset.add(colKey);
+        hashset.add(gridKey);
+      } else {
+        return false;
+      }
     }
-    return true;
+  }
+  return true;
 };
-

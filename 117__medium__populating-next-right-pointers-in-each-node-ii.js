@@ -42,63 +42,63 @@ After calling your function, the tree should look like:
  * 30m
  */
 var connect = function(root) {
-    if (!root) return;
+  if (!root) return;
 
-    let level_head = root;
+  let level_head = root;
 
-    while (level_head) {
-        let curr = level_head; // pointer of this level
+  while (level_head) {
+    let curr = level_head; // pointer of this level
 
-        while (curr) {
-            // left ?
-            if (curr.left && curr.right) curr.left.next = curr.right;
-            else if (curr.left && curr.next) {
-                let left = curr.left;
-                let next = curr.next;
-                while (next) {
-                    if (next.left) {
-                        left.next = next.left;
-                        break;
-                    }
-                    if (next.right) {
-                        left.next = next.right;
-                        break;
-                    }
-                    next = next.next;
-                }
-            }
-            // right ?
-            if (curr.right && curr.next) {
-                let right = curr.right;
-                let next = curr.next;
-                while (next) {
-                    if (next.left) {
-                        right.next = next.left;
-                        break;
-                    }
-                    if (next.right) {
-                        right.next = next.right;
-                        break;
-                    }
-                    next = next.next;
-                }
-            }
-            curr = curr.next;
+    while (curr) {
+      // left ?
+      if (curr.left && curr.right) curr.left.next = curr.right;
+      else if (curr.left && curr.next) {
+        let left = curr.left;
+        let next = curr.next;
+        while (next) {
+          if (next.left) {
+            left.next = next.left;
+            break;
+          }
+          if (next.right) {
+            left.next = next.right;
+            break;
+          }
+          next = next.next;
         }
-
-        // keep moving down the level
-        while (level_head) {
-            if (level_head.left) {
-                level_head = level_head.left;
-                break;
-            }
-            if (level_head.right) {
-                level_head = level_head.right;
-                break;
-            }
-            level_head = level_head.next;
+      }
+      // right ?
+      if (curr.right && curr.next) {
+        let right = curr.right;
+        let next = curr.next;
+        while (next) {
+          if (next.left) {
+            right.next = next.left;
+            break;
+          }
+          if (next.right) {
+            right.next = next.right;
+            break;
+          }
+          next = next.next;
         }
+      }
+      curr = curr.next;
     }
+
+    // keep moving down the level
+    while (level_head) {
+      if (level_head.left) {
+        level_head = level_head.left;
+        break;
+      }
+      if (level_head.right) {
+        level_head = level_head.right;
+        break;
+      }
+      level_head = level_head.next;
+    }
+  }
 };
 
 /**
@@ -109,48 +109,48 @@ var connect = function(root) {
  * 30m
  */
 var connect = function(root) {
-    if (!root) return;
+  if (!root) return;
 
-    let level_head = root;
+  let level_head = root;
 
-    while (level_head) {
-        let curr = level_head; // pointer of this level
-        let next_head = null;
+  while (level_head) {
+    let curr = level_head; // pointer of this level
+    let next_head = null;
 
-        while (curr) {
-            // left
-            if (curr.left) {
-                if (!next_head) next_head = curr.left;
+    while (curr) {
+      // left
+      if (curr.left) {
+        if (!next_head) next_head = curr.left;
 
-                if (curr.right) curr.left.next = curr.right;
-                else {
-                    let next = curr.next;
-                    while (next) {
-                        if (next.left || next.right) {
-                            curr.left.next = next.left || next.right;
-                            break;
-                        }
-                        next = next.next;
-                    }
-                }
+        if (curr.right) curr.left.next = curr.right;
+        else {
+          let next = curr.next;
+          while (next) {
+            if (next.left || next.right) {
+              curr.left.next = next.left || next.right;
+              break;
             }
-            // right
-            if (curr.right) {
-                if (!next_head) next_head = curr.right;
-
-                let next = curr.next;
-                while (next) {
-                    if (next.left || next.right) {
-                        curr.right.next = next.left || next.right;
-                        break;
-                    }
-                    next = next.next;
-                }
-            }
-            curr = curr.next;
+            next = next.next;
+          }
         }
+      }
+      // right
+      if (curr.right) {
+        if (!next_head) next_head = curr.right;
 
-        // keep moving down the level
-        level_head = next_head;
+        let next = curr.next;
+        while (next) {
+          if (next.left || next.right) {
+            curr.right.next = next.left || next.right;
+            break;
+          }
+          next = next.next;
+        }
+      }
+      curr = curr.next;
     }
+
+    // keep moving down the level
+    level_head = next_head;
+  }
 };

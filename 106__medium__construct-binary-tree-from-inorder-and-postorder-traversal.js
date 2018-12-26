@@ -31,24 +31,24 @@ Return the following binary tree:
  *
  */
 var buildTree = function(inorder, postorder) {
-    let p = postorder.length - 1;
-    let map = {};
-    for (let i = 0; i < inorder.length; i++) {
-        map[inorder[i]] = i;
-    }
+  let p = postorder.length - 1;
+  let map = {};
+  for (let i = 0; i < inorder.length; i++) {
+    map[inorder[i]] = i;
+  }
 
-    const helper = (l, r) => {
-        if (l > r) return null;
+  const helper = (l, r) => {
+    if (l > r) return null;
 
-        let root_val = postorder[p--];
-        let root = new TreeNode(root_val);
+    let root_val = postorder[p--];
+    let root = new TreeNode(root_val);
 
-        let idx = map[root_val];
+    let idx = map[root_val];
 
-        root.right = helper(idx + 1, r);
-        root.left = helper(l, idx - 1);
-        return root;
-    };
+    root.right = helper(idx + 1, r);
+    root.left = helper(l, idx - 1);
+    return root;
+  };
 
-    return helper(0, p);
+  return helper(0, p);
 };

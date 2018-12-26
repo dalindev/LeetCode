@@ -27,22 +27,22 @@
  * 20m
  */
 var maxDepth = function(root) {
-    if (!root) return 0;
+  if (!root) return 0;
 
-    let max = 1;
-    topDown(root, max, 0);
-    return max;
+  let max = 1;
+  topDown(root, max, 0);
+  return max;
 
-    function topDown(node, depth) {
-        if (!node) return;
+  function topDown(node, depth) {
+    if (!node) return;
 
-        if (!node.left && !node.right) {
-            max = Math.max(max, depth);
-        }
-
-        topDown(node.left, depth + 1);
-        topDown(node.right, depth + 1);
+    if (!node.left && !node.right) {
+      max = Math.max(max, depth);
     }
+
+    topDown(node.left, depth + 1);
+    topDown(node.right, depth + 1);
+  }
 };
 
 /**
@@ -53,12 +53,12 @@ var maxDepth = function(root) {
  * 10m
  */
 var maxDepth = function(root) {
-    if (!root) return 0;
+  if (!root) return 0;
 
-    let maxLeft = maxDepth(root.left);
-    let maxRight = maxDepth(root.right);
+  let maxLeft = maxDepth(root.left);
+  let maxRight = maxDepth(root.right);
 
-    return 1 + Math.max(maxLeft, maxRight);
+  return 1 + Math.max(maxLeft, maxRight);
 };
 
 /**
@@ -69,19 +69,19 @@ var maxDepth = function(root) {
  * 15m
  */
 var maxDepth = function(root) {
-    let res = 0;
-    let queue = [];
-    if (!root) return res;
+  let res = 0;
+  let queue = [];
+  if (!root) return res;
 
-    queue.push(root);
-    while (queue.length > 0) {
-        const q = queue.length;
-        for (let i = 0; i < q; i++) {
-            let node = queue.shift();
-            if (node.left) queue.push(node.left);
-            if (node.right) queue.push(node.right);
-        }
-        res++;
+  queue.push(root);
+  while (queue.length > 0) {
+    const q = queue.length;
+    for (let i = 0; i < q; i++) {
+      let node = queue.shift();
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
     }
-    return res;
+    res++;
+  }
+  return res;
 };

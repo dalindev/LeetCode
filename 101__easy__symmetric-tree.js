@@ -30,15 +30,14 @@
  * 15m
  */
 var isSymmetric = function(root) {
-    if (!root) return true;
-    const isMirr = (a, b) => {
-        if (!a && !b) return true;
-        if (!a || !b || a.val !== b.val) return false;
-        return isMirr(a.left, b.right) && isMirr(a.right, b.left);
-    }
-    return isMirr(root.left, root.right);
+  if (!root) return true;
+  const isMirr = (a, b) => {
+    if (!a && !b) return true;
+    if (!a || !b || a.val !== b.val) return false;
+    return isMirr(a.left, b.right) && isMirr(a.right, b.left);
+  };
+  return isMirr(root.left, root.right);
 };
-
 
 /**
  * Iterative
@@ -49,20 +48,20 @@ var isSymmetric = function(root) {
  * 15m
  */
 var isSymmetric = function(root) {
-    if (!root) return true;
+  if (!root) return true;
 
-    let queue = [root.left, root.right];
-    while (queue.length > 0) {
-        let t1 = queue.shift();
-        let t2 = queue.shift();
+  let queue = [root.left, root.right];
+  while (queue.length > 0) {
+    let t1 = queue.shift();
+    let t2 = queue.shift();
 
-        if (!t1 && !t2) continue;
-        if (!t1 || !t2 || t1.val !== t2.val) return false;
+    if (!t1 && !t2) continue;
+    if (!t1 || !t2 || t1.val !== t2.val) return false;
 
-        queue.push(t1.left);
-        queue.push(t2.right);
-        queue.push(t1.right);
-        queue.push(t2.left);
-    }
-    return true;
+    queue.push(t1.left);
+    queue.push(t2.right);
+    queue.push(t1.right);
+    queue.push(t2.left);
+  }
+  return true;
 };
