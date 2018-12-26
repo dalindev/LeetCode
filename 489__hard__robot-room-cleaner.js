@@ -89,36 +89,36 @@
  * Runtime: 76 ms, faster than 98.80%
  */
 var cleanRoom = function(robot) {
-    const doneSet = new Set();
-    // [x, y] up, right, down, left
-    const dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+  const doneSet = new Set();
+  // [x, y] up, right, down, left
+  const dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
 
-    dfs(0, 0, 0);
+  dfs(0, 0, 0);
 
-    function dfs(lastDirIndex, x, y) {
-        // move -> clean -> add to doneSet [x:y]
-        robot.clean();
-        doneSet.add(`${x}:${y}`);
-        // dfs 4 direction (if not visited)
-        for (let i = 0; i < 4; i++) {
-            let currDirIndex = (lastDirIndex + i) % 4;
-            let xx = x + dirs[currDirIndex][0];
-            let yy = y + dirs[currDirIndex][1];
+  function dfs(lastDirIndex, x, y) {
+    // move -> clean -> add to doneSet [x:y]
+    robot.clean();
+    doneSet.add(`${x}:${y}`);
+    // dfs 4 direction (if not visited)
+    for (let i = 0; i < 4; i++) {
+      let currDirIndex = (lastDirIndex + i) % 4;
+      let xx = x + dirs[currDirIndex][0];
+      let yy = y + dirs[currDirIndex][1];
 
-            // if the facing grid not cleaned yet
-            // try to move to the facing grid now
-            if (!doneSet.has(`${xx}:${yy}`) && robot.move()) {
-                dfs(currDirIndex, xx, yy);
-            }
+      // if the facing grid not cleaned yet
+      // try to move to the facing grid now
+      if (!doneSet.has(`${xx}:${yy}`) && robot.move()) {
+        dfs(currDirIndex, xx, yy);
+      }
 
-            robot.turnRight(); // turn right 4 time so we face the same direction as we get here
-        }
-
-        // we have done 4 directions here, move back to where we come from
-        robot.turnRight();
-        robot.turnRight();
-        robot.move();
-        robot.turnRight();
-        robot.turnRight();
+      robot.turnRight(); // turn right 4 time so we face the same direction as we get here
     }
+
+    // we have done 4 directions here, move back to where we come from
+    robot.turnRight();
+    robot.turnRight();
+    robot.move();
+    robot.turnRight();
+    robot.turnRight();
+  }
 };

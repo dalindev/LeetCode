@@ -29,14 +29,14 @@
  * Runtime: 56 ms, faster than 100.00%
  */
 var reverseList = function(head) {
-    let prev = null;
-    while (head !== null) {
-        let next = head.next; // hold next node
-        head.next = prev; // reverse this and next (next -> curr)
-        prev = head; // head is the prev of next now
-        head = next; // move to next node (continue reverse)
-    }
-    return prev;
+  let prev = null;
+  while (head !== null) {
+    let next = head.next; // hold next node
+    head.next = prev; // reverse this and next (next -> curr)
+    prev = head; // head is the prev of next now
+    head = next; // move to next node (continue reverse)
+  }
+  return prev;
 };
 /**
  *
@@ -45,13 +45,13 @@ var reverseList = function(head) {
  * Runtime: 56 ms, faster than 100.00%
  */
 var reverseList = function(head) {
-    if (!head) return null; // end of linked list
-    if (head.next === null) return head; // last node in linked list
+  if (!head) return null; // end of linked list
+  if (head.next === null) return head; // last node in linked list
 
-    let newHead = reverseList(head.next); // find the head of reversed linked list
+  let newHead = reverseList(head.next); // find the head of reversed linked list
 
-    head.next.next = head; // reverse (next -> curr)
-    head.next = null; // curr next should be none
+  head.next.next = head; // reverse (next -> curr)
+  head.next = null; // curr next should be none
 
-    return newHead;
+  return newHead;
 };

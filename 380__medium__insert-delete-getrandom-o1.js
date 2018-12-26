@@ -46,8 +46,8 @@
  * Initialize your data structure here.
  */
 var RandomizedSet = function() {
-    this.map = new Map();
-    this.arr = new Array();
+  this.map = new Map();
+  this.arr = new Array();
 };
 
 /**
@@ -56,11 +56,11 @@ var RandomizedSet = function() {
  * @return {boolean}
  */
 RandomizedSet.prototype.insert = function(val) {
-    if (this.map.has(val)) return false;
+  if (this.map.has(val)) return false;
 
-    this.arr.push(val);
-    this.map.set(val, this.arr.length-1);
-    return true;
+  this.arr.push(val);
+  this.map.set(val, this.arr.length - 1);
+  return true;
 };
 
 /**
@@ -69,18 +69,18 @@ RandomizedSet.prototype.insert = function(val) {
  * @return {boolean}
  */
 RandomizedSet.prototype.remove = function(val) {
-    if (!this.map.has(val)) return false;
+  if (!this.map.has(val)) return false;
 
-    let lastIdx = this.arr.length-1;
-    let lastVal = this.arr[lastIdx];
-    let delIdx = this.map.get(val);
-    if (delIdx !== lastIdx) {
-        this.arr[delIdx] = lastVal;
-        this.map.set(lastVal, delIdx);
-    }
-    this.map.delete(val);
-    this.arr.pop();
-    return true;
+  let lastIdx = this.arr.length - 1;
+  let lastVal = this.arr[lastIdx];
+  let delIdx = this.map.get(val);
+  if (delIdx !== lastIdx) {
+    this.arr[delIdx] = lastVal;
+    this.map.set(lastVal, delIdx);
+  }
+  this.map.delete(val);
+  this.arr.pop();
+  return true;
 };
 
 /**
@@ -88,7 +88,7 @@ RandomizedSet.prototype.remove = function(val) {
  * @return {number}
  */
 RandomizedSet.prototype.getRandom = function() {
-    return this.arr[~~(Math.random() * this.arr.length)];
+  return this.arr[~~(Math.random() * this.arr.length)];
 };
 
 /**
@@ -98,4 +98,3 @@ RandomizedSet.prototype.getRandom = function() {
  * var param_2 = obj.remove(val)
  * var param_3 = obj.getRandom()
  */
-

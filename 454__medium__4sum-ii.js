@@ -22,7 +22,6 @@
 
 */
 
-
 /**
  * @param {number[]} A
  * @param {number[]} B
@@ -31,22 +30,22 @@
  * @return {number}
  */
 var fourSumCount = function(A, B, C, D) {
-    let map = new Map();
-    let res = 0;
+  let map = new Map();
+  let res = 0;
 
-    for (let i = 0; i < A.length; i++) {
-        for (let j = 0; j < B.length; j++) {
-            let sum = A[i] + B[j];
-            map.set(sum, (map.get(sum) || 0) + 1);
-        }
+  for (let i = 0; i < A.length; i++) {
+    for (let j = 0; j < B.length; j++) {
+      let sum = A[i] + B[j];
+      map.set(sum, (map.get(sum) || 0) + 1);
     }
-    for (let i = 0; i < C.length; i++) {
-        for (let j = 0; j < D.length; j++) {
-            let target = -C[i] - D[j];
-            res += map.get(target) || 0;
-        }
+  }
+  for (let i = 0; i < C.length; i++) {
+    for (let j = 0; j < D.length; j++) {
+      let target = -C[i] - D[j];
+      res += map.get(target) || 0;
     }
-    return res;
+  }
+  return res;
 };
 /**
  *

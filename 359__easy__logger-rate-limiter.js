@@ -30,13 +30,12 @@
 
 */
 
-
 /**
  * Initialize your data structure here.
  */
 var Logger = function() {
-    this.map = new Map();
-    this.limit = 10;
+  this.map = new Map();
+  this.limit = 10;
 };
 
 /**
@@ -48,13 +47,14 @@ var Logger = function() {
  * @return {boolean}
  */
 Logger.prototype.shouldPrintMessage = function(timestamp, message) {
-    if ( !this.map.has(message)
-      || this.map.has(message) && this.map.get(message) <= timestamp
-    ) {
-        this.map.set(message, timestamp + this.limit);
-        return true;
-    }
-    return false;
+  if (
+    !this.map.has(message) ||
+    (this.map.has(message) && this.map.get(message) <= timestamp)
+  ) {
+    this.map.set(message, timestamp + this.limit);
+    return true;
+  }
+  return false;
 };
 
 /**
@@ -62,4 +62,3 @@ Logger.prototype.shouldPrintMessage = function(timestamp, message) {
  * var obj = Object.create(Logger).createNew()
  * var param_1 = obj.shouldPrintMessage(timestamp,message)
  */
-

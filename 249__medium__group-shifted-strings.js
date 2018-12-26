@@ -23,7 +23,7 @@ Output:
  * @return {string[][]}
  */
 
- /**
+/**
  *
  * O(nk) time   (for n string, avg length k)
  * O(nk) space
@@ -31,30 +31,28 @@ Output:
  * 30m
  */
 var groupStrings = function(strings) {
-    let map = {};
-    let res = [];
+  let map = {};
+  let res = [];
 
-    for (let i = 0; i < strings.length; i++) {
-        let k = getKey(strings[i]);
-        map[k] = map[k] || [];
-        map[k].push(strings[i]);
+  for (let i = 0; i < strings.length; i++) {
+    let k = getKey(strings[i]);
+    map[k] = map[k] || [];
+    map[k].push(strings[i]);
+  }
+  Object.values(map).forEach(group => {
+    res.push(group);
+  });
+  return res;
+
+  function getKey(str) {
+    let base = str[0].charCodeAt();
+    let key = "";
+
+    for (let i = 0; i < str.length; i++) {
+      let dist = str.charCodeAt(i) - base;
+      if (dist < 0) dist += 26;
+      key += dist + "|";
     }
-    Object.values(map).forEach( group => {
-        res.push(group);
-    });
-    return res;
-
-    function getKey (str) {
-        let base = str[0].charCodeAt();
-        let key = '';
-
-        for (let i = 0; i < str.length; i++) {
-            let dist = str.charCodeAt(i) - base;
-            if (dist < 0) dist += 26;
-            key += dist + '|';
-        }
-        return key;
-    }
+    return key;
+  }
 };
-
-

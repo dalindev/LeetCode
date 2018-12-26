@@ -25,18 +25,18 @@
  * @return {number}
  */
 var numJewelsInStones = function(J, S) {
-    if (!J || !S) return 0;
+  if (!J || !S) return 0;
 
-    let count = 0;
-    let set = new Set();
+  let count = 0;
+  let set = new Set();
 
-    for (let i = 0; i < J.length; i++) {
-        set.add(J[i]);
-    }
-    for (let i = 0; i < S.length; i++) {
-        if (set.has(S[i])) count++;
-    }
-    return count;
+  for (let i = 0; i < J.length; i++) {
+    set.add(J[i]);
+  }
+  for (let i = 0; i < S.length; i++) {
+    if (set.has(S[i])) count++;
+  }
+  return count;
 };
 /**
  *

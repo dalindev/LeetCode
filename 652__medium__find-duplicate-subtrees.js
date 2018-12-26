@@ -25,7 +25,6 @@ Therefore, you need to return above trees' root in the form of a list.
 
 */
 
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -39,23 +38,23 @@ Therefore, you need to return above trees' root in the form of a list.
  * @return {TreeNode[]}
  */
 var findDuplicateSubtrees = function(root) {
-    const map = new Map();
-    const res = [];
-    preOrder(root);
-    return res;
+  const map = new Map();
+  const res = [];
+  preOrder(root);
+  return res;
 
-    function preOrder(root) {
-        if (root === null) return '#';
+  function preOrder(root) {
+    if (root === null) return "#";
 
-        let key = root.val + '|' + preOrder(root.left) + '|' + preOrder(root.right);
-        map.set(key, (map.get(key) || 0) + 1 );
+    let key = root.val + "|" + preOrder(root.left) + "|" + preOrder(root.right);
+    map.set(key, (map.get(key) || 0) + 1);
 
-        if (map.get(key) === 2) {
-            res.push(root);
-        }
-
-        return key;
+    if (map.get(key) === 2) {
+      res.push(root);
     }
+
+    return key;
+  }
 };
 /**
  *
@@ -64,5 +63,3 @@ var findDuplicateSubtrees = function(root) {
  *
  * 30m
  */
-
-

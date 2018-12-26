@@ -26,19 +26,17 @@
  * 3m
  */
 var preorderTraversal = function(root) {
-    let res = [];
-    const preorder = (node) => {
-        if (!node) return;
+  let res = [];
+  const preorder = node => {
+    if (!node) return;
 
-        res.push(node.val);
-        preorder(node.left);
-        preorder(node.right);
-    }
-    preorder(root);
-    return res;
+    res.push(node.val);
+    preorder(node.left);
+    preorder(node.right);
+  };
+  preorder(root);
+  return res;
 };
-
-
 
 /**
  *
@@ -50,17 +48,17 @@ var preorderTraversal = function(root) {
  * 3m
  */
 var preorderTraversal = function(root) {
-    if (!root) return [];
+  if (!root) return [];
 
-    let res = [];
-    let st = [root];
+  let res = [];
+  let st = [root];
 
-    while (st.length > 0) {
-        let node = st.pop();
-        res.push(node.val);
-        if (node.right) st.push(node.right);
-        if (node.left) st.push(node.left);
-    }
+  while (st.length > 0) {
+    let node = st.pop();
+    res.push(node.val);
+    if (node.right) st.push(node.right);
+    if (node.left) st.push(node.left);
+  }
 
-    return res;
+  return res;
 };

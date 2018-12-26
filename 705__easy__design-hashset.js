@@ -31,10 +31,10 @@
  * Initialize your data structure here.
  */
 var MyHashSet = function() {
-    this.map = new Array(1000);
-    this.hash = function (key) {
-        return key % 1000;
-    }
+  this.map = new Array(1000);
+  this.hash = function(key) {
+    return key % 1000;
+  };
 };
 
 /**
@@ -42,9 +42,9 @@ var MyHashSet = function() {
  * @return {void}
  */
 MyHashSet.prototype.add = function(key) {
-    let bucket = this.hash(key);
-    this.map[bucket] = this.map[bucket] || [];
-    if (!this.map[bucket].includes(key)) this.map[bucket].push(key);
+  let bucket = this.hash(key);
+  this.map[bucket] = this.map[bucket] || [];
+  if (!this.map[bucket].includes(key)) this.map[bucket].push(key);
 };
 
 /**
@@ -52,10 +52,10 @@ MyHashSet.prototype.add = function(key) {
  * @return {void}
  */
 MyHashSet.prototype.remove = function(key) {
-    let bucket = this.hash(key);
-    this.map[bucket] = this.map[bucket] || [];
-    let index = this.map[bucket].indexOf(key);
-    if (index > -1) this.map[bucket].splice(index, 1);
+  let bucket = this.hash(key);
+  this.map[bucket] = this.map[bucket] || [];
+  let index = this.map[bucket].indexOf(key);
+  if (index > -1) this.map[bucket].splice(index, 1);
 };
 
 /**
@@ -64,9 +64,9 @@ MyHashSet.prototype.remove = function(key) {
  * @return {boolean}
  */
 MyHashSet.prototype.contains = function(key) {
-    let bucket = this.hash(key);
-    this.map[bucket] = this.map[bucket] || [];
-    return this.map[bucket].includes(key);
+  let bucket = this.hash(key);
+  this.map[bucket] = this.map[bucket] || [];
+  return this.map[bucket].includes(key);
 };
 
 /**

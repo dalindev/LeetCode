@@ -35,11 +35,11 @@
  *
  */
 
- /**
+/**
  * Initialize your data structure here.
  */
 var TwoSum = function() {
-    this.hm = new Map();
+  this.hm = new Map();
 };
 
 /**
@@ -48,7 +48,7 @@ var TwoSum = function() {
  * @return {void}
  */
 TwoSum.prototype.add = function(number) {
-    this.hm.set(number, (this.hm.get(number) || 0) + 1);
+  this.hm.set(number, (this.hm.get(number) || 0) + 1);
 };
 
 /**
@@ -57,13 +57,13 @@ TwoSum.prototype.add = function(number) {
  * @return {boolean}
  */
 TwoSum.prototype.find = function(value) {
-    for (let item of this.hm) {
-        let target = value - item[0];
-        if (this.hm.has(target)) {
-            if (target !== item[0] || this.hm.get(target) > 1) return true;
-        }
+  for (let item of this.hm) {
+    let target = value - item[0];
+    if (this.hm.has(target)) {
+      if (target !== item[0] || this.hm.get(target) > 1) return true;
     }
-    return false;
+  }
+  return false;
 };
 
 /**
@@ -72,5 +72,3 @@ TwoSum.prototype.find = function(value) {
  * obj.add(number)
  * var param_2 = obj.find(value)
  */
-
-

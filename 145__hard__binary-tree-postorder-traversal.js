@@ -16,7 +16,6 @@
 
 */
 
-
 /**
  * Recursive
  * O(n) time
@@ -25,41 +24,18 @@
  * 3m
  */
 var postorderTraversal = function(root) {
-    if (!root) return [];
+  if (!root) return [];
 
-    let res = [];
-    const postorder = (node) => {
-        if (!node) return;
+  let res = [];
+  const postorder = node => {
+    if (!node) return;
 
-        postorder(node.left);
-        postorder(node.right);
-        res.push(node.val);
-    }
-    postorder(root);
-    return res;
-};
-
-
-/**
- * Using Stack
- * O(n) time
- * O(n) space
- *
- * 15m
- */
- var postorderTraversal = function(root) {
-    let res = [];
-    let st = [];
-
-    if (!root) return res;
-    st.push(root);
-    while (st.length > 0) {
-        let node = st.pop();
-        res.unshift(node.val);
-        if (node.left) st.push(node.left);
-        if (node.right) st.push(node.right);
-    }
-    return res;
+    postorder(node.left);
+    postorder(node.right);
+    res.push(node.val);
+  };
+  postorder(root);
+  return res;
 };
 
 /**
@@ -70,16 +46,38 @@ var postorderTraversal = function(root) {
  * 15m
  */
 var postorderTraversal = function(root) {
-    let res = [];
-    let st = [];
+  let res = [];
+  let st = [];
 
-    if (!root) return res;
-    st.push(root);
-    while (st.length > 0) {
-        let node = st.pop();
-        res.push(node.val);
-        if (node.left) st.push(node.left);
-        if (node.right) st.push(node.right);
-    }
-    return res.reverse();
+  if (!root) return res;
+  st.push(root);
+  while (st.length > 0) {
+    let node = st.pop();
+    res.unshift(node.val);
+    if (node.left) st.push(node.left);
+    if (node.right) st.push(node.right);
+  }
+  return res;
+};
+
+/**
+ * Using Stack
+ * O(n) time
+ * O(n) space
+ *
+ * 15m
+ */
+var postorderTraversal = function(root) {
+  let res = [];
+  let st = [];
+
+  if (!root) return res;
+  st.push(root);
+  while (st.length > 0) {
+    let node = st.pop();
+    res.push(node.val);
+    if (node.left) st.push(node.left);
+    if (node.right) st.push(node.right);
+  }
+  return res.reverse();
 };

@@ -3,7 +3,7 @@
  * @return {boolean}
  */
 
- /**
+/**
  *
  * O(n) time
  * O(n) space
@@ -11,12 +11,12 @@
  * 2m
  */
 var containsDuplicate = function(nums) {
-    let map = new Map();
-    for (let i = 0; i < nums.length; i++) {
-        if (map.has(nums[i])) return true;
-        map.set(nums[i], 1);
-    }
-    return false;
+  let map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    if (map.has(nums[i])) return true;
+    map.set(nums[i], 1);
+  }
+  return false;
 };
 
 /**
@@ -27,8 +27,8 @@ var containsDuplicate = function(nums) {
  * 1m
  */
 var containsDuplicate = function(nums) {
-    let st = new Set(nums);
-    return st.size !== nums.length;
+  let st = new Set(nums);
+  return st.size !== nums.length;
 };
 
 /**
@@ -40,9 +40,9 @@ var containsDuplicate = function(nums) {
  *
  */
 var containsDuplicate = function(nums) {
-    nums.sort( (a,b) => a - b);
-    for (let i = 1; i < nums.length; i++) {
-        if (nums[i-1] === nums[i]) return true;
-    }
-    return false;
+  nums.sort((a, b) => a - b);
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i - 1] === nums[i]) return true;
+  }
+  return false;
 };

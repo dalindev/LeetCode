@@ -30,7 +30,7 @@
 
 */
 var MyHashMap = function() {
-    this.map = {};
+  this.map = {};
 };
 
 /**
@@ -40,7 +40,7 @@ var MyHashMap = function() {
  * @return {void}
  */
 MyHashMap.prototype.put = function(key, value) {
-    this.map[key] = value;
+  this.map[key] = value;
 };
 
 /**
@@ -49,7 +49,7 @@ MyHashMap.prototype.put = function(key, value) {
  * @return {number}
  */
 MyHashMap.prototype.get = function(key) {
-    return this.map[key] !== undefined ? this.map[key] : -1;
+  return this.map[key] !== undefined ? this.map[key] : -1;
 };
 
 /**
@@ -58,7 +58,7 @@ MyHashMap.prototype.get = function(key) {
  * @return {void}
  */
 MyHashMap.prototype.remove = function(key) {
-    delete this.map[key];
+  delete this.map[key];
 };
 
 /**

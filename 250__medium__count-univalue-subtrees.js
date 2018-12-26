@@ -26,25 +26,25 @@ Output: 4
  * 20m
  */
 var countUnivalSubtrees = function(root) {
-    let count = 0;
-    const postOrder = node => {
-        if (node == null) return true;
+  let count = 0;
+  const postOrder = node => {
+    if (node == null) return true;
 
-        let left = postOrder(node.left);
-        let right = postOrder(node.right);
+    let left = postOrder(node.left);
+    let right = postOrder(node.right);
 
-        if (
-            left &&
-            right &&
-            (!node.left || node.left.val == node.val) &&
-            (!node.right || node.right.val == node.val)
-        ) {
-            count += 1;
-            return true;
-        }
-        return false;
-    };
+    if (
+      left &&
+      right &&
+      (!node.left || node.left.val == node.val) &&
+      (!node.right || node.right.val == node.val)
+    ) {
+      count += 1;
+      return true;
+    }
+    return false;
+  };
 
-    postOrder(root);
-    return count;
+  postOrder(root);
+  return count;
 };

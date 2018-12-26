@@ -32,17 +32,17 @@
  * @return {number[]}
  */
 var anagramMappings = function(A, B) {
-    if (!A || !B) return null;
+  if (!A || !B) return null;
 
-    let map = {}; // {} is faster than Map()
-    for (let i = 0; i < B.length; i++) {
-        if (!map[B[i]]) map[B[i]] = i;
-    }
+  let map = {}; // {} is faster than Map()
+  for (let i = 0; i < B.length; i++) {
+    if (!map[B[i]]) map[B[i]] = i;
+  }
 
-    let res = new Array(A.length);
-    for (let i = 0; i < A.length; i++) {
-        res[i] = map[A[i]];
-    }
+  let res = new Array(A.length);
+  for (let i = 0; i < A.length; i++) {
+    res[i] = map[A[i]];
+  }
 
-    return res;
+  return res;
 };
