@@ -17,8 +17,60 @@
 
 */
 
-function quickSortRecursive(arr, low, high) {
+function quickSort (arr, low, high) {
   if (low < high) {
-    let pivot = partition(arr, low, high)
+    let p = partition(arr, low, high)
+
+    quickSort(arr, low, p - 1);  // Before pi
+    quickSort(arr, p + 1, high); // After pi
   }
 }
+/*
+  This function takes last element as pivot, places
+  the pivot element at its correct position in sorted
+  array, and places all smaller (smaller than pivot)
+  to left of pivot and all greater elements to right
+  of pivot
+
+  5 6 1 2 4 9
+  *
+
+*/
+function quickSort (arr, low, high) {
+  let idx = partition(arr, low, high);
+
+  if (low < idx - 1) {
+    quickSort(arr, low, idx - 1); // Before pi
+  }
+
+  if (high > idx) {
+    quickSort(arr, idx, high); // After pi
+  }
+
+}
+
+function partition (arr, low, high) {
+  let pindex = low;
+
+  while (low <= high) {
+    // from left find
+    while (arr[low] < arr[pindex]) {
+      low++;
+    }
+    while (arr[pindex] < arr[high]) {
+      high--;
+    }
+    if (low <= high) {
+      [arr[low], arr[high]] = [arr[high], arr[low]];
+      low++;
+      high--;
+    }
+  }
+  return low;
+}
+
+// TEST
+let a = [3, 5, 1, 7, 8, 9, 4, 2, 6, 10];
+console.log(a);
+quickSort(a, 0, a.length - 1);
+console.log(a);
